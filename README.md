@@ -1,3 +1,6 @@
+A modification of OnStepX to support MKS-DLC32 shield (since I have not found related pinmap).
+WARNING: absolutely useless at the moment, just a placeholder till I really write something :)
+
 OnStepX Telescope Controller
 ===========================
 
