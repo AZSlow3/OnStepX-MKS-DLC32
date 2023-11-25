@@ -76,6 +76,13 @@
 #define STA_ENABLED true
 #endif
 
+#ifndef MDNS_SERVER
+#define MDNS_SERVER                  ON                           // mDNS enabled
+#endif
+#ifndef MDNS_NAME
+#define MDNS_NAME                    "onstepx"                    // mDNS device name
+#endif
+
 #ifndef AP_SSID
 #define AP_SSID                       "OnStepX"                   // Wifi Access Point SSID
 #endif
