@@ -34,7 +34,9 @@
 
 #define JTWSTM                      19     // JTW Astronomy PCB rev 2.1
 
-#define PINMAP_LAST                 19
+#define MKS_DLC32_V2                20
+
+#define PINMAP_LAST                 20
 
 // WEATHER sensors (temperature, pressure, and humidity)
 #define WEATHER_FIRST               1

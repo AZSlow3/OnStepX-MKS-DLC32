@@ -75,6 +75,10 @@
   #define PINMAP_STR "MaxSTM v3"
   #include "Pins.MaxSTM.h"
 #endif
+#if PINMAP == MKS_DLC32_V2
+  #define PINMAP_STR "MKS DLC32 v2"
+  #include "Pins.MKS-DLC32.h"
+#endif
 #ifndef PINMAP_STR
   #define PINMAP_STR "Unknown"
 #endif
