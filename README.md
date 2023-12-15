@@ -10,15 +10,18 @@ For this board PINMAP must be MKS_DLC32_V2 (it will set GPIO_DEVICE).
 In the pinmap, the parameters of the third driver are defined for AXIS3 or AXIS4, depending
 from AXIS3/4_DRIVER_MODEL. So you can use it for rotator or for focuser.
 
+Display driver is LovyanGFX. In my tests its touch implementation is way faster (TFT_eSPI use many delay()
+in getting current status) and the library allows local config (my dev setup has different display).
+Display code in in MKS_TS35R plug-in.
+
 Note that controlling drivers with UART is not possible with this board. So GENERIC driver model is the only option.
 
 See comments in Pins.MKS-DLC32.h for other possible options and features.
 
 Current status:
-Tested on ESP-WROOM-32 "NodeMCU" 30pin board + dev board (to connect 12V power), with 74HC595D GPIO connected according to MKS-DLC32 documentation.
-One NEMA 17 1.5A connected throw MKS TMC2209 v2.0 seems like reacting right on commands from Android App (was set to 8 micro-steps, in "GoTo"
-was "stalled" once turning fast with default settings, I hope the limitation comes from the hardware, but I doubt I will even need such speed
-with 64 micro-steps).
+Tested on MKS DLC32 with 3x MKS TMC2209 v2.9 drivers (64 micro-steps per step mode) and 3 NEMA 17 1.5A 1.8° per step motors.
+In a room everything seems like working as expected.
+Display/touch is not tested yet.
 
 OnStepX Telescope Controller
 ===========================

@@ -25,8 +25,12 @@
 //  * Beeper output throw GPIO (so sigitat) is available on display socket and on dedicated socket (12V !)
 //    Not (yet) defined.
 //  * There are many pins dedicated to TFT LCD touch display (TS35/TS24).
-//    LCD_CS_0 (IO25), LCD_TOUCH_CS_0 (IO26), LCD_RST_0 (IO27), LCD_EN_0 (IO5) are connected to U7 and U8 (??? what are they),
-//    while LCD_SCK (IO18), LCD_MISO (IO19), LCD_MOSI (IO23) are directly available on display socket and so
+//    LCD_CS_0 (IO25), LCD_TOUCH_CS_0 (IO26) and LCD_RST_0 (IO27) are connected to 74HC125 (U7, as repeater),
+//    LCD_EN_O(IO5) is connected throw inverter (U8, LV1T04). The reason is unclear, may be that was a "fight"
+//    agains infamous diod on TFT CS pin in many schemas (still exists on dedicated displays, not sure about TS35).
+//    The inverted can be an attempt to make backlit brighter (5V???), following some fuzzy comments is some docs.
+//    But that are just my (n00b) speculations.
+//    LCD_SCK (IO18), LCD_MISO (IO19), LCD_MOSI (IO23) are directly available on display socket and so
 //    potentiall can be used for other perpose (if display is not used).
 //    I (plan to) use the display.
 //  * there is SD card reader, connected to IO (39,14,12,13,15). Note in the original firmware is is not used for writing.
@@ -78,8 +82,7 @@
 #define GPIO_SSR74HC595_DATA_PIN   21
 #define GPIO_SSR74HC595_COUNT       8
 
-#define SHARED_ENABLE_PIN   GPIO_PIN(0)            // Hint that the direction pins are shared
-#define SHARED_ENABLE_PIN      5                // Hint that the enable pins are shared
+#define SHARED_ENABLE_PIN   GPIO_PIN(0)         // Hint that the enable pins are shared
 
 // ??? Should I define GPIO_DIRECTION_PINS ??? not used in any current definition...
 
