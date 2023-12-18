@@ -100,7 +100,7 @@ bool TS35R::isTracking(){
  *                       bool *supressFrame, bool *numericReply, CommandError *commandError) {
  */
 
-uint32_t _focuser_move_rate = 1; // valid values 1 - 4, not really working, always 0.1mm...
+uint32_t _focuser_move_rate = 2; // valid values 1 - 4, not really working, always 0.1mm...
 
 bool TS35R::isFastFocusSpeed(){
   return _focuser_move_rate >= 3;
@@ -108,9 +108,9 @@ bool TS35R::isFastFocusSpeed(){
 
 static void _focuser_toggle_speed(){
   if(_focuser_move_rate >= 3)
-    _focuser_move_rate = 1;
+    _focuser_move_rate = 2;
   else
-    _focuser_move_rate = 3;
+    _focuser_move_rate = 4;
   // set right before moving
 }
 
@@ -124,7 +124,7 @@ static void _focuser_move(bool move_in){
   cmd[1] = _focuser_move_rate + '0';
   focuser.command(reply, cmd, "", &sf, &nr, &err);
   // move
-  cmd[1] = (move_in ? '+' : '-');
+  cmd[1] = (move_in ? '-' : '+');
   focuser.command(reply, cmd, "", &sf, &nr, &err);
 }
 

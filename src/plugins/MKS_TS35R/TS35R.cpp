@@ -156,10 +156,10 @@ void TS35R::_init(bool _isdlc32){
             110,  40, 100, 100, TFT_YELLOW, TFT_BLACK, TFT_ORANGE, &FreeSans18pt7b_deg, "N"); 
   btnS.init(&gfx, TS35RBTN_MOMENTARY, TS35RCMD_MS , TS35RCMD_SS ,
             110, 145, 100, 100, TFT_YELLOW, TFT_BLACK, TFT_ORANGE, &FreeSans18pt7b_deg, "S"); 
-  btnW.init(&gfx, TS35RBTN_MOMENTARY, TS35RCMD_MW , TS35RCMD_SW ,
-              5,  93, 100, 100, TFT_YELLOW, TFT_BLACK, TFT_ORANGE, &FreeSans18pt7b_deg, "W"); 
-  btnE.init(&gfx, TS35RBTN_MOMENTARY, TS35RCMD_ME , TS35RCMD_SE ,
-            215,  93, 100, 100, TFT_YELLOW, TFT_BLACK, TFT_ORANGE, &FreeSans18pt7b_deg, "E"); 
+  btnW.init(&gfx, TS35RBTN_MOMENTARY, TS35RCMD_MW , TS35RCMD_SE ,
+              5,  93, 100, 100, TFT_YELLOW, TFT_BLACK, TFT_ORANGE, &FreeSans18pt7b_deg, "E"); 
+  btnE.init(&gfx, TS35RBTN_MOMENTARY, TS35RCMD_ME , TS35RCMD_SW ,
+            215,  93, 100, 100, TFT_YELLOW, TFT_BLACK, TFT_ORANGE, &FreeSans18pt7b_deg, "W"); 
   btnIn.init(&gfx, TS35RBTN_MOMENTARY, TS35RCMD_FIN , TS35RCMD_FSTOP ,
               5, 250, 152,  65, TFT_YELLOW, TFT_BLACK, TFT_ORANGE, &FreeSans18pt7b_deg, "In"); 
   btnOut.init(&gfx,TS35RBTN_MOMENTARY, TS35RCMD_FOUT , TS35RCMD_FSTOP ,
@@ -183,7 +183,7 @@ void TS35R::_init(bool _isdlc32){
   auto touch = reinterpret_cast<lgfx::Touch_XPT2046 *>(gfx.touch());
   if(touch){
     auto cfg = touch->config();
-    cfg.offset_rotation = m_isDLC32 ? 6 : 6; // I probably have to change that
+    cfg.offset_rotation = m_isDLC32 ? 2 : 6; // I probably have to change that
     touch->config(cfg);
   }
   m_CmdQueue = xQueueCreate( 10, sizeof( uint32_t ) ); // 10 should be more then sufficient, if OnStep is still alive...
